@@ -1,0 +1,50 @@
+--Reformat the final_assignments_qa to look like the final_assignments table, filling in any missing values with a placeholder of the appropriate data type.
+
+SELECT 
+  * 
+FROM 
+  dsv1069.final_assignments;
+  
+SELECT 
+    item_id,
+    'test_a' AS test_number,
+    test_a AS test_assignment,
+    CAST('2022-01-01' AS date) AS test_start_date
+FROM dsv1069.final_assignments_qa
+UNION 
+
+SELECT 
+    item_id,
+    'test_b' AS test_number,
+     test_b AS test_assignment,
+     CAST('2022-01-01' AS date) AS test_start_date
+FROM dsv1069.final_assignments_qa
+UNION 
+SELECT 
+    item_id,
+    'test_c' AS test_number,
+    test_c AS test_assignment,
+     CAST('2022-01-01' AS date) AS test_start_date
+FROM dsv1069.final_assignments_qa
+UNION 
+SELECT 
+    item_id,
+    'test_d' AS test_number,
+    test_d AS test_assignment,
+     CAST('2022-01-01' AS date) AS test_start_date
+FROM dsv1069.final_assignments_qa
+UNION 
+SELECT 
+    item_id,
+    'test_e' AS test_number,
+    test_e AS test_assignment,
+     CAST('2022-01-01 ' AS date) AS test_start_date
+FROM dsv1069.final_assignments_qa
+UNION 
+SELECT 
+    item_id,
+    'test_f' AS test_number,
+     test_f AS test_assignment,
+     CAST('2022-01-01 ' AS date) AS test_start_date
+FROM dsv1069.final_assignments_qa
+  
