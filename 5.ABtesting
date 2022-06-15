@@ -1,0 +1,14 @@
+--Use the https://thumbtack.github.io/abba/demo/abba.html to compute the lifts in metrics and the p-values for the binary metrics 
+--( 30 day order binary and 30 day view binary) using a interval 95% confidence. 
+
+
+--ORDERS--
+-- p-value: 0.88	
+-- lift: -14% – 12% (-1%)
+
+-- VIEWS--
+-- p-value: 0.25	
+-- lift: -1.6% – 6.1% (2.3%)
+
+
+-- For item_test_2, there was no significant difference between control and experiment in the number of views or the number of orders.
