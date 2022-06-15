@@ -1,0 +1,35 @@
+-- Use this table to compute order_binary for the 30 day window after the test_start_date
+-- for the test named item_test_2
+
+--SELECT *
+--FROM dsv1069.final_assignments;
+  
+SELECT 
+    orders_b.test_assignment,
+    COUNT(DISTINCT orders_b.item_id) AS orders,
+    SUM(orders_b.orders_binary)     AS order_binary,
+    SUM(orders_b.orders_bin_30d) AS orders_binary_30d
+FROM
+    (SELECT 
+        assignments.item_id,
+        assignments.test_assignment,
+        MAX(CASE WHEN orders.created_at > assignments.test_start_date THEN 1 ELSE 0 END) AS orders_binary,
+        MAX(CASE WHEN orders.created_at > assignments.test_start_date AND
+            DATE_PART('day', orders.created_at - assignments.test_start_date ) <= 30
+            THEN 1 ELSE 0 END) AS orders_bin_30d
+            
+     FROM 
+        dsv1069.final_assignments AS assignments
+     LEFT JOIN 
+        dsv1069.orders AS orders
+      ON 
+          assignments.item_id = orders.item_id
+     WHERE 
+        assignments.test_number='item_test_2'
+     GROUP BY 
+        assignments.item_id,
+        assignments.test_assignment
+      ) AS orders_b
+              
+GROUP BY orders_b.test_assignment
+
